@@ -1,0 +1,144 @@
+#kss-nav {
+  width: 20%;
+  background-color: #eee;
+  box-shadow: inset -15px 0px 15px -15px rgba(45, 45, 45, 0.25);
+}
+#kss-nav nav > ul {
+  padding: 0;
+  margin: 2em;
+  margin-top: 2.5em;
+  list-style-type: none;
+}
+#kss-main,
+#kss-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#kss-main {
+  padding-left: 2.5%;
+  width: 77.5%;
+  max-width: 58em;
+  left: 20%;
+}
+/* Pretty printing styles. Used with prettify.js. */
+/* SPAN elements with the classes below are added by prettyprint. */
+.pln {
+  color: #ffffff;
+}
+/* plain text */
+@media screen {
+  .str {
+    color: #ff0000;
+  }
+  /* string content */
+  .kwd {
+    color: #ffffff;
+  }
+  /* a keyword */
+  .com {
+    color: #ffffff;
+  }
+  /* a comment */
+  .typ {
+    color: #800080;
+  }
+  /* a type name */
+  .lit {
+    color: #f92672;
+  }
+  /* a literal value */
+  /* punctuation, lisp open bracket, lisp close bracket */
+  .pun {
+    color: #a6e22e;
+  }
+  .opn {
+    color: LightSeaGreen;
+  }
+  .clo {
+    color: LightSeaGreen;
+  }
+  .tag {
+    color: #f92672;
+  }
+  /* a markup tag name */
+  .atn {
+    color: #a6e22e;
+  }
+  /* a markup attribute name */
+  .atv {
+    color: #e6db74;
+  }
+  /* a markup attribute value */
+  .dec,
+  .var {
+    color: YellowGreen;
+  }
+  /* a declaration; a variable name */
+  .fun {
+    color: #ff0000;
+  }
+  /* a function name */
+}
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str {
+    color: #006600;
+  }
+  .kwd {
+    color: #006;
+    font-weight: bold;
+  }
+  .com {
+    color: #600;
+    font-style: italic;
+  }
+  .typ {
+    color: #404;
+    font-weight: bold;
+  }
+  .lit {
+    color: #004444;
+  }
+  .pun,
+  .opn,
+  .clo {
+    color: #444400;
+  }
+  .tag {
+    color: #006;
+    font-weight: bold;
+  }
+  .atn {
+    color: #440044;
+  }
+  .atv {
+    color: #006600;
+  }
+}
+/* Put a border around prettyprinted code snippets. */
+/*pre.prettyprint { padding: 2px; border: 1px solid #888 }*/
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 {
+  list-style-type: none;
+}
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+  background: #eeeeee;
+}

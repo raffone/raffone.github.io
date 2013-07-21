@@ -1,0 +1,187 @@
+@import rapido
+
+h1, h2, h3, h4
+	margin-bottom: rhythm(.5)
+
+p a
+	font-weight: bold
+
+html, body
+	// height: 100%
+	+e(clearfix)
+	// background-color: red
+	position: relative
+	min-height: 100%
+
+
+#kss-nav
+	+box-shadow(inset -20px 0 20px -15px #000)
+	+position(absolute, 0px 0 0px 0px)
+	background-color: #25292c
+	border-right: 3px solid #e3eaee
+	float: left
+	padding: em(20px)
+	width: em(200px)
+
+	a
+		color: #f52761
+		margin-bottom: rhythm(.4)
+		font-family: monospace, serif
+
+		&:before
+			content: "–"
+			display: inline-block
+			padding-right: 10px
+			color: #71715d
+		&:hover:before
+			content: "+"
+
+#kss-main
+	left: right
+	width: 100%
+	max-width: 70em
+	padding: em(20px) em(20px) em(20px) em(220px)
+
+
+.kss-mod-list
+	width: 100%
+
+.kss-mod-name
+	border-bottom: 1px solid #a3c619
+	display: block
+	margin-bottom: 20px
+
+	em
+		background-color: #a3c619
+		color: #fff
+		display: inline-block
+		font-size: 14px
+		font-style: normal
+		font-weight: normal
+		line-height: 18px
+		padding: .4em
+
+.kss-ref em
+	font-style: normal
+
+.kss-mod-example
+	display: block
+	padding-bottom: 20px
+
+	& > td
+		@extend .clearfix
+		display: block
+
+.prettyprint
+	// background-color: #25292c
+	// background-color: #f2faff
+	background-color: #f2f5f7
+	// border: 1px solid darken(#f2faff, 10)
+	display: block
+	margin-bottom: 20px
+	padding: 1em
+
+pre
+	margin: 0
+
+p code, li code
+	// background-color: #f8f8f8
+	// border: 1px solid #ddd
+	color: #a11492
+	font-weight: bold
+
+pre + ul
+	// background-color: #f2f4f6
+	// padding: 1em
+
+.desk-3
+	background: orange
+	color: #ffffff
+	font-weight: bold
+	margin-bottom: 20px
+	padding: 10px
+	text-align: center
+
+// ------------------------------------------------------------------------------
+//   @group prettyprint.js styling
+// ------------------------------------------------------------------------------
+
+.pln
+	color: #000
+// .str
+	// color: #e6db74
+// .kwd
+	// color: white
+.com
+	color: #3e7e21
+.typ
+	color: #66d9ef
+.lit
+	color: #9f1873
+// .pun
+	// color: rgb(166, 226, 46)
+.opn
+	color: lightseagreen
+.clo
+	color: lightseagreen
+.tag
+	color: #a11492
+.atn, .pun
+	color: #ac5842
+.atv, .kwd, .str
+	color: #331fce
+.dec, .var
+	color: yellowgreen
+.fun
+	color: red
+
+// Monokay dark
+// .pln
+// 	color: white
+// .str
+// 	color: #e6db74
+// .kwd
+// 	color: white
+// .com
+// 	color: #75705e
+// .typ
+// 	color: #66d9ef
+// .lit
+// 	color: rgb(249, 38, 114)
+// .pun
+// 	color: rgb(166, 226, 46)
+// .opn
+// 	color: lightseagreen
+// .clo
+// 	color: lightseagreen
+// .tag
+// 	color: rgb(249, 38, 114)
+// .atn
+// 	color: rgb(166, 226, 46)
+// .atv
+// 	color: rgb(230, 219, 116)
+// .dec, .var
+// 	color: yellowgreen
+// .fun
+// 	color: red
+
+
+
+ol.linenums
+	margin-top: 0
+	margin-bottom: 0
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8
+	list-style-type: none
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9
+	background: #eeeeee
