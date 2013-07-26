@@ -7,10 +7,13 @@ p a
 	font-weight: bold
 
 html, body
-	// height: 100%
 	+e(clearfix)
-	// background-color: red
 	position: relative
+
+html
+	height: 100%
+
+body
 	min-height: 100%
 
 
@@ -75,11 +78,25 @@ html, body
 .prettyprint
 	// background-color: #25292c
 	// background-color: #f2faff
-	background-color: #f2f5f7
+	// background-color: #f2f5f7
+	background: #faf8ed
+	border: 1px solid darken(#faf8ed, 5)
+	border-radius: $base-border-radius
+	// background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHElEQVQIW2O8e/fuf2VlZUYGKIAzMARgKjFUAABhrQgFBT3IdAAAAABJRU5ErkJggg==) repeat
 	// border: 1px solid darken(#f2faff, 10)
 	display: block
 	margin-bottom: 20px
 	padding: 1em
+	position: relative
+	// &:before
+	// 	content: "Markup"
+	// 	padding: 0 rhythm(1)
+	// 	font-size: .8em
+	// 	line-height: 30px
+	// 	height: 30px
+	// 	display: inline-block
+	// 	+position(absolute, -30px 0 0 0px)
+	// 	background-color: darken(#faf8ed, 5)
 
 pre
 	margin: 0
@@ -87,7 +104,7 @@ pre
 p code, li code
 	// background-color: #f8f8f8
 	// border: 1px solid #ddd
-	color: #a11492
+	// color: #a11492
 	font-weight: bold
 
 pre + ul
@@ -106,36 +123,62 @@ pre + ul
 //   @group prettyprint.js styling
 // ------------------------------------------------------------------------------
 
+// Coda
+// ------------------------------------------------------------------------------
 .pln
-	color: #000
-// .str
-	// color: #e6db74
-// .kwd
-	// color: white
+	color: #3f3a22
+
 .com
-	color: #3e7e21
-.typ
-	color: #66d9ef
+	color: #a29558
+
+
+// .typ
+	// color: #53cacb
 .lit
-	color: #9f1873
-// .pun
-	// color: rgb(166, 226, 46)
+	color: #da7826 // @include, arancio
 .opn
 	color: lightseagreen
 .clo
 	color: lightseagreen
-.tag
-	color: #a11492
+
+// HTML
+.tag, p code, li code
+	color: #e42c63 // <label, rosso
 .atn, .pun
-	color: #ac5842
-.atv, .kwd, .str
-	color: #331fce
+	color: #509e3f // class=, verde
+.atv, .kwd, .str, .typ
+	color: #2e7ea9 // "form__label", blue
+
+
 .dec, .var
 	color: yellowgreen
-.fun
-	color: red
+
+// // Coda
+// // ------------------------------------------------------------------------------
+// .pln
+// 	color: #000
+// .com
+// 	color: #3e7e21
+// .typ
+// 	color: #66d9ef
+// .lit
+// 	color: #9f1873
+// .opn
+// 	color: lightseagreen
+// .clo
+// 	color: lightseagreen
+// .tag
+// 	color: #a11492
+// .atn, .pun
+// 	color: #ac5842
+// .atv, .kwd, .str
+// 	color: #331fce
+// .dec, .var
+// 	color: yellowgreen
+
 
 // Monokay dark
+// ------------------------------------------------------------------------------
 // .pln
 // 	color: white
 // .str

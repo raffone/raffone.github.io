@@ -108,7 +108,7 @@
         
         
           
-            <h1 class="kss-title"><!-- <span class="kss-ref">23.0</span> -->Mixins</h1>
+            <h1 class="kss-title"><!-- <span class="kss-ref">30.0</span> -->Default Styles</h1>
           
 
           
@@ -117,7 +117,12 @@
 
            
                 
-                  <p>Some of them are from Bootstrap, others are custom.</p>
+                  <p>One of the main reason of the existence of Rapido is because I wanted to separate pure framework code form styling.
+Every component refer to a silent class from <code>_default-style.scss</code>.
+
+</p>
+<p>These are all the classes available by default, others can be added or removed based on what component you want
+to enable or disable.</p>
 
                 
             
@@ -127,41 +132,19 @@
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.1</em></span> Create a rectangle</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.1</em></span> Titles</h2>
           
 
           
 
            
                 
-                  <pre><code>@include size($height, $width);</code></pre>
-<ul>
-<li><code>$height</code>: Height of the rectangle</li>
-<li><code>$width</code>: Width of the rectangle</li>
-</ul>
-
-                
-            
-          
-            </section>
-
-          
-        
-          
-
-          
-           <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.2</em></span> Create a square</h2>
-          
-
-          
-
-           
-                
-                  <pre><code>@include square($size);</code></pre>
-<ul>
-<li><code>$size</code>: Dimension used both for width and height</li>
-</ul>
+                  <pre><code>%h1                             # For &lt;h1&gt;
+%h2                             # For &lt;h2&gt;
+%h3                             # For &lt;h3&gt;
+%h4                             # For &lt;h4&gt;
+%h5                             # For &lt;h5&gt;
+%h6                             # For &lt;h6&gt;</code></pre>
 
                 
             
@@ -174,28 +157,16 @@
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.3</em></span> Position an element</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.2</em></span> Inputs and Selects</h2>
           
 
           
 
            
                 
-                  <pre><code>@include position ($position, $coordinates);</code></pre>
-<ul>
-<li><code>$position</code>: fixed, relative, absolute</li>
-<li><code>$coordinates</code>: 0 = null, 0px or more is a value used in the css.</li>
-</ul>
-<p>Example:
-
-</p>
-<pre><code>@include position (absolute, 0 0px 0px 0);</code></pre>
-<p>Become:
-
-</p>
-<pre><code>position: absolute;
-right: 0px;
-bottom: 0px;</code></pre>
+                  <pre><code>%input                          # For the &lt;input&gt; and &lt;textarea&gt;
+%input-addon                    # For the addon texts in forms
+%select                         # Custom select style, by default it use %input</code></pre>
 
                 
             
@@ -208,20 +179,20 @@ bottom: 0px;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.4</em></span> Center-block</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.3</em></span> Buttons</h2>
           
 
           
 
            
                 
-                  <pre><code>@include center-block();</code></pre>
-<p>Become:
+                  <pre><code>%btn--default                   # Default button colors
+%btn--primary                   # Default color for primary buttons
+%btn--secondary                 # Default color for secondary buttons
+%btn--scripts                   # Default buttons color for buttons used in scripts (slides, modals)
 
-</p>
-<pre><code>display: block;
-margin-left: auto;
-margin-right: auto;</code></pre>
+%btn__disabled                  # For disabled button
+%btn__current                   # For current button (es. used in Pagination)</code></pre>
 
                 
             
@@ -234,21 +205,14 @@ margin-right: auto;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.5</em></span> Center</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.4</em></span> Captions</h2>
           
 
           
 
            
                 
-                  <p>Vertical and horizontal centering with absolute positioning, using the element size and negative margin.
-
-</p>
-<pre><code>@include center($width, $height);</code></pre>
-<ul>
-<li><code>$height</code>: Height of the element</li>
-<li><code>$width</code>: Width of the element</li>
-</ul>
+                  <pre><code>%caption                        # Used for the captions in .caption and modals</code></pre>
 
                 
             
@@ -261,17 +225,14 @@ margin-right: auto;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.6</em></span> Extend</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.5</em></span> Labels (Badges &amp; Pills)</h2>
           
 
           
 
            
                 
-                  <p>When using SASS syntax.
-
-</p>
-<pre><code>+e(classname)</code></pre>
+                  <pre><code>%pill                           # For the .badge and .pill</code></pre>
 
                 
             
@@ -284,17 +245,15 @@ margin-right: auto;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.7</em></span> Placeholder</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.6</em></span> Dropdowns</h2>
           
 
           
 
            
                 
-                  <pre><code>@include placeholder($color);</code></pre>
-<ul>
-<li><code>$color</code>: Set color of the placeholder of an input.</li>
-</ul>
+                  <pre><code>%dropdown                       # For the dropdown&apos;s list
+%dropdown--open                 # For the drodpown button in .open state</code></pre>
 
                 
             
@@ -307,23 +266,17 @@ margin-right: auto;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.8</em></span> Text overflow</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.7</em></span> Tables</h2>
           
 
           
 
            
                 
-                  <p>Wrap text with ellipsis (modern browsers only).
-
-</p>
-<pre><code>@include text-overflow();</code></pre>
-<p>Become
-
-</p>
-<pre><code>overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;</code></pre>
+                  <pre><code>%table--bordered                # For .table--bordered
+%table--striped                 # For .table--striped
+%table--hover                   # For .table--hover
+%table--sortable                # For .table--sortable</code></pre>
 
                 
             
@@ -336,24 +289,17 @@ white-space: nowrap;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.10</em></span> Triangle with Borders</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.8</em></span> Navs</h2>
           
 
           
 
            
                 
-                  <p>Add a css-only triangle width side borders, usefull for tooltips. For now only side triangles with border are suported.
-
-</p>
-<pre><code>@include triangle_border($size, $color, $border-color, $border-width, $direction);</code></pre>
-<ul>
-<li><code>$size</code>: Same as <code>square</code></li>
-<li><code>$color</code>: Color of the triangle</li>
-<li><code>$border-color</code>: Border color of the triangle</li>
-<li><code>$border-width</code>: Border width of the triangle</li>
-<li><code>$direction</code>: left or right</li>
-</ul>
+                  <pre><code>%nav--btn                       # For links in navs with .nav--btn
+%nav--btn__hover                # For the :hover state of %nav--btn
+%nav--btn__current              # For the current selected link
+%nav--btn__disabled             # For the disabled links</code></pre>
 
                 
             
@@ -366,19 +312,15 @@ white-space: nowrap;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.11</em></span> Text inset shadow</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.9</em></span> Breadcrumbs</h2>
           
 
           
 
            
                 
-                  <pre><code>@include text-inset-shadow($bg, $textcolor, $contrast);</code></pre>
-<ul>
-<li><code>$bg</code>: Background color of the text</li>
-<li><code>$textcolor</code>: Color of the text</li>
-<li><code>$contrast</code>: How much stronger the inset will be</li>
-</ul>
+                  <pre><code>%breadcrumb                     # Base style of breadcrumbs
+%breadcrumb__current            # For the current selected link</code></pre>
 
                 
             
@@ -391,31 +333,18 @@ white-space: nowrap;</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.12</em></span> Alpha Color</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.10</em></span> Pagination</h2>
           
 
           
 
            
                 
-                  <p>Alpha color with ie full opacity fallback (for IE)
-
-</p>
-<pre><code>@include alpha-color($color, $alpha, $attribute);</code></pre>
-<ul>
-<li><code>$color</code>: Base HEX color</li>
-<li><code>$alpha</code>: Opacity</li>
-<li><code>$attribute</code>: On what attribute</li>
-</ul>
-<p>Example
-
-</p>
-<pre><code>@include alpha-color(#000, .5, color);</code></pre>
-<p>Become
-
-</p>
-<pre><code>color: #000;
-color: rgba(0,0,0,.5);</code></pre>
+                  <pre><code>%pagination--btn                # For links in .pagination
+%pagination--btn__hover         # For the :hover state of %pagination--btn
+%pagination--btn__active        # For the :active  state of %pagination--btn
+%pagination--btn__current       # For the current selected link
+%pagination--btn__disabled      # For the disabled links</code></pre>
 
                 
             
@@ -428,20 +357,17 @@ color: rgba(0,0,0,.5);</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.13</em></span> Keyframes support</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.11</em></span> Pager</h2>
           
 
           
 
            
                 
-                  <p>Used for creating custom animations.
-
-</p>
-<pre><code>@include keyframes($name);</code></pre>
-<ul>
-<li><code>$name</code>: Name of the keyframe</li>
-</ul>
+                  <pre><code>%pager--btn                     # For the links in .pager
+%pager--btn__hover              # For the :hover state of %pager--btn
+%pager--btn__active             # For the :active  state of %pager--btn
+%pager--btn__disabled           # For the disabled links</code></pre>
 
                 
             
@@ -454,18 +380,22 @@ color: rgba(0,0,0,.5);</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.14</em></span> Nav divider</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.12</em></span> Modals</h2>
           
 
           
 
            
                 
-                  <pre><code>@include nav-divider($top $bottom);</code></pre>
-<ul>
-<li><code>$top</code>: Color of the top border</li>
-<li><code>$bottom</code>: Color of the bottom border</li>
-</ul>
+                  <pre><code>%modal__btn                     # For all button links in modals
+%modal__close                   # For the default close button
+%modal__close--alt              # Alternative style for close button in iframes
+%modal__btnbar-size             # Width and height of #fancybox-buttons
+%modal__overlay                 # Color of background overlay
+%modal__skin                    # For the modal window
+%modal__nav                     # For the Next and Prev buttons
+%modal__caption                 # For the caption
+%modal__loading                 # Position and style of the loading icon</code></pre>
 
                 
             
@@ -478,20 +408,17 @@ color: rgba(0,0,0,.5);</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.15</em></span> Comicbook Shadow</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.13</em></span> Sliders</h2>
           
 
           
 
            
                 
-                  <pre><code>@include shadow-comicbook($padding $color $size $distance);</code></pre>
-<ul>
-<li><code>$padding</code>: Border color</li>
-<li><code>$color</code>: Color of the shadow</li>
-<li><code>$size</code>: Size of the shadow</li>
-<li><code>$distance</code>: Distance of the shadow from the image</li>
-</ul>
+                  <pre><code>%slider__btn                    # For all button links in sliders
+%slider__pager                  # For the single  links in the pager
+%slider__caption                # For the caption
+%slider__loading                # Position and style of the loading icon</code></pre>
 
                 
             
@@ -504,30 +431,18 @@ color: rgba(0,0,0,.5);</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.17</em></span> Media Queries</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.14</em></span> Tabs</h2>
           
 
           
 
            
                 
-                  <p>Add media queries to css width simple naming convention.
-
-</p>
-<pre><code>@include media(&lt;$media&gt;) {...};</code></pre>
-<p>You can set the start/and with of each step from usins the variables <code>$lap-start</code>, <code>$desk-start</code>, <code>$desk-end</code>.
-
-</p>
-<ul>
-<li><code>$media</code>:<ul>
-<li><code>palm</code>: Only Palm</li>
-<li><code>lap</code>:  Only Lap</li>
-<li><code>lap-and-up</code>: Lap + Desktop</li>
-<li><code>portable</code>: Lap + Palm</li>
-<li><code>desk</code>: Only Desktop</li>
-</ul>
-</li>
-</ul>
+                  <pre><code>%tab__nav                       # For the tabs links container
+%tab__btn                       # For the single tabs link
+%tab__btn__hover                # For the :hover state of tabs link
+%tab__btn__current              # For the current selected tab link
+%tab__container                 # For the content continer</code></pre>
 
                 
             
@@ -540,36 +455,14 @@ color: rgba(0,0,0,.5);</code></pre>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.18</em></span> Sprites</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.15</em></span> Alerts</h2>
           
 
           
 
            
                 
-                  <p>Rapido use the compass&apos; <a href="http://compass-style.org/help/tutorials/spriting/">Sprites Mixin</a> that make including sprites easily both in the html and directly in the css,
-for more info see the full documentation from the link.
-
-</p>
-<p>First you need to add to your scss file an import to import all of the seperate icons that will be compiled in a single image.
-For example if you have a folder named <code>icons</code> inside the main <code>images</code> folder add this line:
-
-</p>
-<pre><code>@import &quot;icons/*.png&quot;;</code></pre>
-<p>Then add you have two options:
-
-</p>
-<p>Add the sprite in the html with (where <code>icon_name</code> is the filename of the icon). .s` is the standard class the must be used with all sprites images.
-
-</p>
-<pre><code>&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;s icons-icon_name&quot;&gt;&lt;/i&gt; Link&lt;/a&gt;</code></pre>
-<p>Or via <code>@include</code> from the scss:
-
-</p>
-<pre><code>a:before {
-    @include sprite(icon_name)
-}</code></pre>
-<p>The result is the same.</p>
+                  <pre><code>%alert                          # For all alert messages</code></pre>
 
                 
             
@@ -582,24 +475,39 @@ For example if you have a folder named <code>icons</code> inside the main <code>
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>23.19</em></span> Responsive grid</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>30.16</em></span> Responsive Nav</h2>
           
 
           
 
            
                 
-                  <pre><code>@include columns ($cols, $cols-container, $omega, $nth-omega, $remove-omega, $from, $media, $highlight-omega);</code></pre>
-<ul>
-<li><code>$cols</code>: How many columns</li>
-<li><code>$cols-container</code>: Columns of the container (default: $total-columns)</li>
-<li><code>$omega</code>: Bolean, us if is the last column</li>
-<li><code>$nth-omega</code>: If is a multi-row grid list use nth to apply omega to each element at the end of each row (example: <code>3n</code> to use omega every 3th element )</li>
-<li><code>$remove-omega</code>: Remove omega on previously applied omega (ignore it)</li>
-<li><code>$from</code>: Direction, left or right</li>
-<li><code>$media</code>: Media query to to use, for responsive grids</li>
-<li><code>$highlight-omega</code>: Bolean, used for debugging nth</li>
-</ul>
+                  <pre><code>%nav--responsive                # For the open nav state in responsive mode
+%nav__toggle                    # For the toggle open/close button in responsive mode</code></pre>
+
+                
+            
+          
+            </section>
+
+          
+        
+          
+
+          
+           <section class="kss-depth-2">
+            <h2 class="kss-title"><span class="kss-ref"><em>30.17</em></span> Shared</h2>
+          
+
+          
+
+           
+                
+                  <p>Classes For other classes of generic elements
+
+</p>
+<pre><code>%caret                          # Side triangle For Dropdowns and Selects
+%loader-ico                     # generic loader icon For all scripts</code></pre>
 
                 
             

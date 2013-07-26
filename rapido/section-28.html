@@ -95,6 +95,8 @@
         
           <li><a href="section-28.html"><!-- 28.0:  -->Base Dimensions</a></li>
         
+          <li><a href="section-30.html"><!-- 30.0:  -->Default Styles</a></li>
+        
       </ul>
       </nav>
     </aside>
@@ -126,7 +128,7 @@ $horizontal-offset:             180px   # Labels width in horizontal forms.</cod
 
           
            <section class="kss-depth-2">
-            <h2 class="kss-title"><span class="kss-ref"><em>28.1</em></span> Text</h2>
+            <h2 class="kss-title"><span class="kss-ref"><em>28.1</em></span> Text Size</h2>
           
 
           
@@ -136,19 +138,51 @@ $horizontal-offset:             180px   # Labels width in horizontal forms.</cod
                   <p>Font sizes you can used with the compass mixin <code>adjust-font-size-to()</code>. Naming convention from <a href="http://inuitcss.com/">Inuit</a>.
 
 </p>
-<pre><code>$giga-size:                     $base-font-size * 7     # ~98
-$mega-size:                     $base-font-size * 5     # ~70px
-$kilo-size:                     $base-font-size * 3.4   # ~47px
+<pre><code>$giga-size:                     $base-font-size * 7     # 98px
+$mega-size:                     $base-font-size * 5     # 70px
+$kilo-size:                     $base-font-size * 3.5   # 49px
 
-$h1-size:                       $base-font-size * 2.4   # ~33px
-$h2-size:                       $base-font-size * 2     # ~28px
-$h3-size:                       $base-font-size * 1.8   # ~25px
-$h4-size:                       $base-font-size * 1.4   # ~20px
-$h5-size:                       $base-font-size * 1.2   # ~17px
-$h6-size:                       $base-font-size * 1     # ~14px
+$h1-size:                       $base-font-size * 2.5   # 35px
+$h2-size:                       $base-font-size * 2     # 28px
+$h3-size:                       $base-font-size * 1.85  # 26px
+$h4-size:                       $base-font-size * 1.5   # 21px
+$h5-size:                       $base-font-size * 1.25  # 17.5px
+$h6-size:                       $base-font-size * 1     # 14px
 
-$milli-size:                    $base-font-size * .85   # ~12px
-$micro-size:                    $base-font-size * .7    # ~10px</code></pre>
+$milli-size:                    $base-font-size * .85   # 12px
+$micro-size:                    $base-font-size * .7    # 10px</code></pre>
+
+                
+            
+          
+            </section>
+
+          
+        
+          
+
+          
+
+          
+           <section class="kss-depth-3">
+            <h3 class="kss-title"><span class="kss-ref"><em>28.1.1</em></span>Line-Height</h3>
+          
+
+           
+                
+                  <p>By default all titles have a line-height based on the font-size, to ensure that it will allways respect the vertical rhythm.
+Sometimes this result is not what we expect/want so it&apos;s possible to override the default proportion width these.
+
+</p>
+<p>These values mean: X times the base line-height.
+
+</p>
+<pre><code>$h1-line-height:                2
+$h2-line-height:                2
+$h3-line-height:                2
+$h4-line-height:                1.5
+$h5-line-height:                1.5
+$h6-line-height:                1.5</code></pre>
 
                 
             
