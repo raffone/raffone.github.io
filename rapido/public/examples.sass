@@ -7,7 +7,6 @@ p a
 	font-weight: bold
 
 html, body
-	+e(clearfix)
 	position: relative
 
 html
@@ -15,6 +14,7 @@ html
 
 body
 	min-height: 100%
+	+e(clearfix)
 
 
 #kss-nav
@@ -76,40 +76,20 @@ body
 		display: block
 
 .prettyprint
-	// background-color: #25292c
-	// background-color: #f2faff
-	// background-color: #f2f5f7
 	background: #faf8ed
 	border: 1px solid darken(#faf8ed, 5)
 	border-radius: $base-border-radius
-	// background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHElEQVQIW2O8e/fuf2VlZUYGKIAzMARgKjFUAABhrQgFBT3IdAAAAABJRU5ErkJggg==) repeat
-	// border: 1px solid darken(#f2faff, 10)
 	display: block
 	margin-bottom: 20px
 	padding: 1em
 	position: relative
-	// &:before
-	// 	content: "Markup"
-	// 	padding: 0 rhythm(1)
-	// 	font-size: .8em
-	// 	line-height: 30px
-	// 	height: 30px
-	// 	display: inline-block
-	// 	+position(absolute, -30px 0 0 0px)
-	// 	background-color: darken(#faf8ed, 5)
-
 pre
 	margin: 0
 
 p code, li code
-	// background-color: #f8f8f8
-	// border: 1px solid #ddd
-	// color: #a11492
 	font-weight: bold
 
 pre + ul
-	// background-color: #f2f4f6
-	// padding: 1em
 
 .desk-3
 	background: orange
