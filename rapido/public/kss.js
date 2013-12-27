@@ -1,26 +1,5 @@
-var walk = require('./waaaalk.js'),
-  KssSection = require('./kss_section.js'),
-  KssStyleguide = require('./kss_styleguide.js'),
-  KssModifier = require('./kss_modifier.js'),
-  precompilers = require('./precompiler')(),
-  path = require('path'),
-  fs = require('fs'),
-  util = require('util'),
-  marked = require('marked'),
-  natural = require('natural'),
-  traverse, parse, parseChunk, checkReference, findBlocks, processMarkup,
-  isDeprecated, isExperimental, hasPrefix,
-  commentExpressions = {
-    single: ,
-    multiStart:  ,
-    multiFinish:  ,
-    multiBeforeFinish:
-  };
-
 (function() {
   var KssStateGenerator;
-
-
 
   KssStateGenerator = (function() {
 
