@@ -50,7 +50,7 @@
             <h1 class="kss-doc-title"><a href="./">Rapido CSS</a></h1>
           </header>
           <nav class="kss-nav">
-            <ul class="kss-menu" data-kss-ref="23">
+            <ul class="kss-menu" data-kss-ref="31">
               <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
               
               <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Alerts</span></a></li>
@@ -125,11 +125,39 @@
               
               
               
-              <li class="kss-menu-item"><a href="#section-23.1"><span class="kss-ref">23.1</span><span class="kss-name">Outlines</span></a></li>
+              <li class="kss-menu-item"><a href="#section-31.1"><span class="kss-ref">31.1</span><span class="kss-name">Text Size</span></a></li>
               
               
               
-              <li class="kss-menu-item"><a href="#section-23.2"><span class="kss-ref">23.2</span><span class="kss-name">Easing</span></a></li>
+              <li class="kss-menu-item"><a href="#section-31.1.1"><span class="kss-ref">31.1.1</span><span class="kss-name">Line-Height</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.2"><span class="kss-ref">31.2</span><span class="kss-name">Forms</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.4"><span class="kss-ref">31.4</span><span class="kss-name">Sizes</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.5"><span class="kss-ref">31.5</span><span class="kss-name">Widths</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.6"><span class="kss-ref">31.6</span><span class="kss-name">Heights</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.7"><span class="kss-ref">31.7</span><span class="kss-name">Media Queries</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.8"><span class="kss-ref">31.8</span><span class="kss-name">Grid (Susy)</span></a></li>
+              
+              
+              
+              <li class="kss-menu-item"><a href="#section-31.9"><span class="kss-ref">31.9</span><span class="kss-name">Z-index</span></a></li>
               
               
             </ul>
@@ -141,54 +169,183 @@
         <article class="kss-article">
           
           
-          <section id="section-23" class="kss-section kss-depth-1">
-            <h1 class="kss-title"><span class="kss-ref">23</span> Debug mode</h1>
+          <section id="section-31" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">31</span> Base Dimensions</h1>
             
             
             <div class="kss-description">
-              <p>Add different background colors and border for elements with different
-proprieties (has class, has id, has title, ect.), usefull for debugging code
-and finding errors. Taken form <a href="https://github.com/csswizardry/inuit.css">Inuit</a>.
-
-</p>
-<p>Enable it with <code>$debug-html: true;</code>.</p>
+              <pre><code>$base-border-radius:            4px     # Border radius used as a standard on all elements.
+$horizontal-offset:             180px   # Labels width in horizontal forms.</code></pre>
 
             </div>
             
             
           </section>
           
-          <section id="section-23.1" class="kss-section kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">23.1</span> Outlines</h1>
+          <section id="section-31.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.1</span> Text Size</h1>
             
             
             <div class="kss-description">
-              <p>More simple than <code>$debug-outlines</code>, it outline all elements in different colors
-to help differentiate them and visualize their placement on the page.
-Taken form <a href="https://github.com/mrmrs/pesticide">Pesticide</a>.
+              <p>Font sizes you can used with the compass mixin <code>adjust-font-size-to()</code>. Naming convention from <a href="http://inuitcss.com/">Inuit</a>.
 
 </p>
-<p>Enable it with <code>$debug-outlines: true;</code>.</p>
+<pre><code>$giga-size:                     $base-font-size * 7     # 98px
+$mega-size:                     $base-font-size * 5     # 70px
+$kilo-size:                     $base-font-size * 3.5   # 49px
+
+$h1-size:                       $base-font-size * 2.5   # 35px
+$h2-size:                       $base-font-size * 2     # 28px
+$h3-size:                       $base-font-size * 1.85  # 26px
+$h4-size:                       $base-font-size * 1.5   # 21px
+$h5-size:                       $base-font-size * 1.25  # 17.5px
+$h6-size:                       $base-font-size * 1     # 14px
+
+$small-size:                    $base-font-size * .85   # 12px
+$smaller-size:                  $base-font-size * .7    # 10px
+$smallest-size:                 $base-font-size * .5    # 7px</code></pre>
 
             </div>
             
             
           </section>
           
-          <section id="section-23.2" class="kss-section kss-depth-2">
-            <h1 class="kss-title"><span class="kss-ref">23.2</span> Easing</h1>
+          <section id="section-31.1.1" class="kss-section kss-depth-3">
+            <h1 class="kss-title"><span class="kss-ref">31.1.1</span> Line-Height</h1>
             
             
             <div class="kss-description">
-              <p>There are lots of easing options available, from the basic <code>linear</code> or <code>ease-in</code> to more complex like <code>easeInOutCirc</code>. For an example of all of these in use see <a href="http://easings.net">Easings.net</a>.
+              <p>By default all titles have a line-height based on the font-size, to ensure that it will allways respect the vertical rhythm.
+Sometimes this result is not what we expect/want so it&apos;s possible to override the default proportion width these.
 
 </p>
-<ul>
-<li><strong>Base</strong>: linear, ease, ease-in, ease-out, ease-in-out</li>
-<li><strong>easeIn</strong>: easeInQuad, easeInCubic, easeInQuart, easeInQuint, easeInSine, easeInExpo, easeInCirc, easeInBack</li>
-<li><strong>easeOut</strong>: easeOutQuad, easeOutCubic, easeOutQuart, easeOutQuint, easeOutSine, easeOutExpo, easeOutCirc, easeOutBack</li>
-<li><strong>easeInOut</strong>: easeInOutQuad, easeInOutCubic, easeInOutQuart, easeInOutQuint, easeInOutSine, easeInOutExpo, easeInOutCirc, easeInOutBack</li>
-</ul>
+<p>These values mean: n times the base line-height.
+
+</p>
+<pre><code>$h1-line-height:                2
+$h2-line-height:                2
+$h3-line-height:                2
+$h4-line-height:                1.5
+$h5-line-height:                1.5
+$h6-line-height:                1.5</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.2</span> Forms</h1>
+            
+            
+            <div class="kss-description">
+              <p>Base padding and margins used in the forms.
+
+</p>
+<pre><code>$control-margin-bottom:         $base-line-height
+$label-margin-bottom:           10px    # Margin below labels
+$input-border:                  1px     # Border width used for inputs and buttons
+$input-padding-top:             10px    # Base top padding
+$input-padding-side:            10px    # Base side padding
+$checkbox-padding-left:         20px    # Side padding used for checkboxes and radios</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.4" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.4</span> Sizes</h1>
+            
+            
+            <div class="kss-description">
+              <pre><code>$loader-ico-size:               44px        # Icon size of the loader used with some componets
+$modal-btn-size:                30px        # Size of buttons used with the modals
+$slider-btn-size:               30px        # Size of buttons used with the sliders
+$tooltip-triangle-size:         15px        # Size the tooltip&apos;s triangle</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.5" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.5</span> Widths</h1>
+            
+            
+            <div class="kss-description">
+              <pre><code>$dropdowns-width:                160px       # max-width of dropdowns
+$tooltips-width:                 200px       # max-width of tooltips</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.6" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.6</span> Heights</h1>
+            
+            
+            <div class="kss-description">
+              <p>Some elements need to have a max-height specified for smoother animations, like dropdowns:
+
+</p>
+<pre><code>$dropdowns-height:              600px</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.7" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.7</span> Media Queries</h1>
+            
+            
+            <div class="kss-description">
+              <p>Set the width of the three steps of the layout.
+
+</p>
+<pre><code>$lap-start:                     481px       # Max width of smartphone
+$desk-start:                    768px       # Max width for tablet
+$desk-end:                      1080px      # Max width for desktop</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.8" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.8</span> Grid (Susy)</h1>
+            
+            
+            <div class="kss-description">
+              <p>Default settings for susy grid. More info: <a href="http://susy.oddbird.net/">Susy</a>.
+
+</p>
+<pre><code>$total-columns:                 12          # Number of columns
+$column-width:                  50px        # Columns width
+$gutter-width:                  30px        # Gutter width
+$container-style:               fluid       # Grid style</code></pre>
+
+            </div>
+            
+            
+          </section>
+          
+          <section id="section-31.9" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">31.9</span> Z-index</h1>
+            
+            
+            <div class="kss-description">
+              <p>Default settings for overlay components, taken from Bootstrap.
+
+</p>
+<pre><code>$zindex-offcanvas:              990         # OffCanvas
+$zindex-dropdown:               1000        # Dropdowns
+$zindex-popover:                1010        # Popovers
+$zindex-tooltip:                1030        # Tooltips
+$zindex-slider:                 1040        # Sliders
+$zindex-modal:                  1050        # Modals</code></pre>
 
             </div>
             

@@ -1,5 +1,5 @@
 /*
- *  Rapido - v0.1.5
+ *  Rapido - v0.1.6
  *  An easy and quick Sass + Compass + Susy + OOCSS + BEM prototyping framework.
  *  https://github.com/raffone/rapido
  *
@@ -33,7 +33,7 @@
       animation = base.$el.data('animation');
 
 
-      if(base.options.offsetMenu) {
+      if (base.options.offsetMenu) {
         container = '.offcanvas__content';
         offset = base.$el.position();
       } else {
@@ -44,17 +44,17 @@
       offset = offset.top - base.options.offset;
       offset = parseInt(offset);
 
-      console.log(offset);
+      //console.log(offset);
 
       $(container).scroll(function(e) {
 
-        if(base.options.offsetMenu) {
+        if (base.options.offsetMenu) {
           scrollbar = $('.offcanvas__content').scrollTop();
         } else {
-          scrollbar = document.documentElement.scrollTop;
+          scrollbar = $(document).scrollTop();
         }
 
-        console.log(scrollbar);
+        //console.log(scrollbar);
 
         if (offset <= scrollbar && !added) {
           base.$el.addClass(animation);
@@ -100,7 +100,8 @@
       var wrapperClass, togglerClass, str;
 
       // Grab and convert class name of container
-      wrapperClass = '.' + base.$el.attr('class').split(' ')[0];
+      //wrapperClass = '.' + base.$el.attr('class').split(' ')[0];
+      wrapperClass = $.rapido_Utilities.elemClass(el);
 
       // Grab and convert class of the toggler button
       str = base.$el.children()[0];
@@ -313,6 +314,230 @@ $('.offcanvas__menu--toggle').rapido_Offcanvas();
     $.Rapido = {};
   }
 
+  $.Rapido.Overlay = function(el, options) {
+    var base = this;
+
+    base.$el = $(el);
+    base.el = el;
+
+    base.$el.data('Rapido.Overlay', base);
+
+    base.init = function() {
+      base.options = $.extend({},$.Rapido.Overlay.defaultOptions, options);
+
+      // Remove delay if browser doesn't support css animations
+      if ($('html').hasClass('no-csstransitions')) {
+        base.options.delay = 0;
+      }
+
+
+      var id = base.$el.data('overlay-ref');
+
+      // Methods
+      addOverlay();
+      addClose(id);
+      openOverlay(id);
+      closeOverlay(id);
+
+    };
+
+    // Remove dot for option classes
+    var dotless = function(text) {
+      return text.slice(1);
+    };
+
+    var addOverlay = function() {
+      var present = $(base.options.backgroundClass).length;
+
+      // If there isn't a .overlay-background element, add it
+      if (present === 0) {
+        // Add overlay element
+        $('<div />')
+          .addClass(dotless(base.options.backgroundClass))
+          .appendTo('body');
+      }
+    };
+
+    var addClose = function(id) {
+      // Add close button to overlay
+      $('<span>Close</span>')
+        .addClass(dotless(base.options.closeClass))
+        .prependTo('[data-overlay-content="' + id + '"]');
+    };
+
+    var openOverlay = function(id) {
+
+      base.$el.on('click', function(e) {
+        var offset, height;
+
+        height = $(window).height();
+
+        $(window).resize(function() {
+          height = $(window).height();
+        });
+
+        // Set ovewrflow:hidden to backgroudn page
+        $('html').css({
+          'overflow': 'hidden',
+          'height': 'auto'
+        });
+
+        // Add scrollbar offset only if desktop browser
+        $('html.no-touch').css({
+          'border-right': '15px solid #f2f2f2'
+        });
+
+        // Set class to open and add offset
+        $('[data-overlay-content="' + id + '"], ' + base.options.backgroundClass)
+          .removeClass('close')
+          .addClass('open')
+          .css({'top': '0', 'height': height});
+
+        // If window is resized update offset
+        $(window).resize(function() {
+          $('[data-overlay-content="' + id + '"].open, ' + base.options.backgroundClass + '.open')
+            .css({'top': '0', 'height': height});
+        });
+
+        e.preventDefault();
+      });
+    };
+
+    var closeOverlay = function(id) {
+      $(base.options.closeClass).on('click', function(e) {
+
+        // Remove overflow:hidden
+        $('html, body')
+          .delay(base.options.delay)
+          .queue(function(next) {
+              $(this).removeAttr('style');
+              next();
+            });
+
+        // Set overlay class to close
+        $('[data-overlay-content="' + id + '"], ' + base.options.backgroundClass)
+          .addClass('close')
+          .delay(base.options.delay)
+          .queue(function(next) {
+              $(this)
+              .removeClass('open close')
+              .removeAttr('style');
+              next();
+            });
+
+      });
+    };
+
+    base.init();
+  };
+
+  $.Rapido.Overlay.defaultOptions = {
+    delay: 500,
+    closeClass: '.overlay-close',
+    backgroundClass: '.overlay-background'
+  };
+
+  $.fn.rapido_Overlay = function(options) {
+    return this.each(function() {
+      (new $.Rapido.Overlay(this, options));
+    });
+  };
+
+})(jQuery, window, document);
+
+
+(function($, window, document, undefined) {
+
+  if (!$.Rapido) {
+    $.Rapido = {};
+  }
+
+  $.Rapido.Suggest = function(el, options) {
+    var base = this;
+
+    base.$el = $(el);
+    base.el = el;
+
+    base.$el.data('Rapido.Suggest', base);
+
+    base.init = function() {
+      base.options = $.extend({},$.Rapido.Suggest.defaultOptions, options);
+
+      var className = $.rapido_Utilities.elemClass(el);
+      var suggestElem = className + ' ' + base.options.suggestClass;
+      var linkElem = suggestElem + ' a';
+
+      setSize(suggestElem);
+
+      $(window).resize(function() {
+        setSize(suggestElem);
+      });
+
+      compileInput(linkElem);
+
+    };
+
+    var setSize = function(suggestElem) {
+      $(suggestElem).each(function() {
+
+        var $suggest = $(this);
+        var $input = $(this).parents(base.options.containerClass).children('input[type = "text"]');
+
+        // Get position of the input and position the suggest accordingly
+        $suggest.css({
+          'top': ($input.position().top + $input.height()) + 'px',
+          'left': $input.position().left + 'px',
+          'width': $input.outerWidth() + 'px'
+        });
+
+        // Toggle class on :focus and :blur
+        $input.focus(function() {
+          $(suggestElem).removeClass('open');
+          $suggest.addClass('open');
+        });
+
+        $input.blur(function() {
+          $suggest.removeClass('open');
+        });
+
+      });
+    };
+
+    var compileInput = function(linkElem) {
+      $(linkElem).on('click', function(e) {
+
+        var value = $(this).text();
+        var $input = $(this).parents(base.options.containerClass).children('input[type = "text"]');
+
+        $input.val(value);
+
+        e.preventDefault();
+      });
+    };
+
+    base.init();
+  };
+
+  $.Rapido.Suggest.defaultOptions = {
+    containerClass: '.form__controls',
+    suggestClass: '.form__suggest'
+  };
+
+  $.fn.rapido_Suggest = function(options) {
+    return this.each(function() {
+      (new $.Rapido.Suggest(this, options));
+    });
+  };
+
+})(jQuery, window, document);
+
+
+(function($, window, document, undefined) {
+
+  if (!$.Rapido) {
+    $.Rapido = {};
+  }
+
   $.Rapido.Toggle = function(el, options) {
     var base = this;
 
@@ -391,3 +616,133 @@ $('.offcanvas__menu--toggle').rapido_Offcanvas();
   };
 
 })(jQuery, window, document);
+
+(function($, window, document, undefined) {
+
+  if (!$.Rapido) {
+    $.Rapido = {};
+  }
+
+  $.Rapido.Tooltip = function(el, options) {
+    var base = this;
+
+    base.$el = $(el);
+    base.el = el;
+
+    base.$el.data('Rapido.Tooltip', base);
+
+    var target = {};
+    var tooltip = {};
+    var content = base.$el.data('tooltip-content');
+    var position = base.$el.data('tooltip-position');
+    var is = {
+      top: position.indexOf('top') >= 0,
+      right: position.indexOf('right') >= 0,
+      bottom: position.indexOf('bottom') >= 0,
+      left: position.indexOf('left') >= 0,
+      center: position.indexOf('center') >= 0
+    };
+
+    base.init = function() {
+      base.options = $.extend({},$.Rapido.Tooltip.defaultOptions, options);
+
+      addTooltip();
+    };
+
+    // Get position of target
+    var getTargetData = function() {
+
+      target.top = base.$el.position().top;
+      target.left = base.$el.position().left;
+      target.height = base.$el.outerHeight();
+      target.width = base.$el.outerWidth();
+    };
+
+    // Get size of tooltip
+    var getTooltipData = function() {
+      tooltip.height = base.$el.next('.tooltip').outerHeight();
+      tooltip.width = base.$el.next('.tooltip').outerWidth();
+    };
+
+    // Calculate positioning
+    var setTooltipPositioning = function() {
+      if (is.top) {
+        tooltip.top = target.top - tooltip.height - base.options.margin;
+      }
+      if (is.right) {
+        tooltip.left = target.left + target.width + base.options.margin;
+      }
+      if (is.bottom) {
+        tooltip.top = target.top + target.height + base.options.margin;
+      }
+      if (is.left) {
+        tooltip.left = target.left - tooltip.width - base.options.margin;
+      }
+      if (is.top || is.bottom) {
+        tooltip.left = target.left + (target.width / 2) - (tooltip.width / 2);
+      }
+      if (is.left && is.right) {
+        tooltip.top = target.top + (target.height / 2) - (tooltip.height / 2);
+      }
+
+      // Reset width and height, we don't need them anymore
+      tooltip.height = null;
+      tooltip.width = null;
+    };
+
+    // Add tooltip to html
+    var addTooltip = function() {
+      $('<span class="tooltip" />').html(content).insertAfter(base.el);
+
+      // Get and set correct positioning
+      getTargetData();
+      getTooltipData();
+      setTooltipPositioning();
+
+      $(window).resize(function() {
+        getTargetData();
+        getTooltipData();
+        setTooltipPositioning();
+      });
+
+      // Add css positioning to tooltip
+      base.$el.next('.tooltip').css(tooltip);
+
+      $(window).resize(function() {
+        base.$el.next('.tooltip').css(tooltip);
+      });
+
+      // Toggle on :hover
+      base.$el.on('mouseenter mouseleave', function() {
+        base.$el.next('.tooltip').toggleClass('open');
+      });
+    };
+
+    base.init();
+  };
+
+  $.Rapido.Tooltip.defaultOptions = {
+    margin: 15
+  };
+
+  $.fn.rapido_Tooltip = function(options) {
+    return this.each(function() {
+      (new $.Rapido.Tooltip(this, options));
+    });
+  };
+
+})(jQuery, window, document);
+
+
+(function($, window, document, undefined) {
+
+  $.rapido_Utilities = {
+
+    elemClass: function(el) {
+      return '.' + $(el).attr('class').split(' ').join('.');
+    }
+
+  };
+
+})(jQuery, window, document);
+
