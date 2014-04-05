@@ -1,0 +1,185 @@
+//$link-color: $main-color
+
+//$base-font-family:
+
+$font-mono: 'PT Mono', Monaco, Menlo, Consolas, "Courier New", monospace
+
+@import '../../frameworks/rapido/stylesheets/rapido.scss'
+
+$main-color: #65778c
+$secondary-color: #5fceea
+$third-color: #488d0f
+$background-color: #f6f6f6
+
+body
+  //background-color: #efefef
+
+html, body
+  height: 100%
+  min-height: 100%
+
+.kss-wrapper
+  position: relative
+  min-height: 100%
+
+
+// ----------------------------------------------------------------------------
+
+.kss-sidebar
+  +adjust-font-size-to($small-size)
+  +position(absolute, 0 null 0 0)
+  font-family: $font-mono
+  overflow: auto
+  padding: rhythm(1) rhythm(.5) rhythm(.5)
+  text-align: left
+  width: 200px
+
+  .kss-doc-title
+    //+adjust-font-size-to($base-font-size)
+    margin-bottom: rhythm(1)
+    text-align: center
+
+    a
+      padding: 0
+
+  a
+    color: $main-color
+    padding: rhythm(.15) rhythm(.5)
+
+
+  ul
+    +e(list-style-none)
+
+
+
+  .kss-menu-item
+    border-bottom: 1px dotted #dddddd
+
+    .kss-ref
+      float: right
+      +opacity(.5)
+
+    a
+      display: block
+
+    > a
+      &:hover
+        background: $background-color
+
+
+  .kss-active
+
+
+    > a
+      background: $secondary-color
+      font-weight: bold
+      color: #fff
+
+      &:hover
+        background: darken($secondary-color, 5)
+
+      .kss-ref
+        +opacity(1)
+
+    .kss-menu-child
+      background: $background-color
+      //+adjust-font-size-to($small-size)
+
+      li:first-child
+        padding-top: rhythm(.25)
+
+      li:last-child
+        padding-bottom: rhythm(.25)
+
+      a
+        color: #65778c
+
+        &:hover
+          color: $text-color
+
+
+// ----------------------------------------------------------------------------
+.kss-overview h1,
+.kss-overview h2,
+.kss-overview h3,
+.kss-overview h4,
+.kss-title
+  font-family: $font-mono
+  //font-family: 'Maven Pro', sans-serif
+  color: $secondary-color
+
+.kss-depth-2 .kss-title,
+.kss-depth-3 .kss-title
+  +adjust-font-size-to($h5-size)
+  color: $text-color
+  padding: .75em 0
+  border-top: 3px solid $secondary-color
+  border-bottom: 1px solid darken($background-color, 10)
+  margin-bottom: rhythm(1)
+
+.kss-content
+  +position(absolute, 0 0 0 200px)
+  //background: $background-color
+  overflow: auto
+  padding: rhythm(1)
+
+.kss-section
+  +e(transition)
+  max-width: 1000px
+  position: relative
+  margin-bottom: rhythm(2)
+
+.kss-title .kss-ref
+  +opacity(.5)
+  color: $main-color
+  float: right
+  font-family: $base-font-family
+
+  .kss-depth-1 &
+    font-size: em($small-size, $h1-size)
+
+  .kss-depth-2 &,
+  .kss-depth-3 &
+    font-size: em($small-size, $h5-size)
+
+
+.kss-modifier-block
+
+  .kss-modifier-head
+    margin-bottom: rhythm()
+    background: $background-color
+    border-top: 1px solid darken($background-color, 10)
+
+    > *
+      +adjust-font-size-to($small-size)
+      +inline-block()
+      padding: rhythm(.25) rhythm(.5)
+
+  .kss-modifier-name
+    font-weight: bold
+
+  .kss-modifier-description
+    color: #999
+    p
+      margin: 0
+
+    p code
+      background: #fff
+
+.kss-modifier-example
+  +clearfix()
+  margin-bottom: rhythm()
+
+
+.tag.close
+  float: none
+  font-weight: normal
+  color: inherit
+
+p code,
+li code
+  color: $third-color
+  background: $background-color
+  padding: .2em .3em
+  border: 1px solid darken($background-color, 5)
+
